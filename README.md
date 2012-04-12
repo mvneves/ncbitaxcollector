@@ -72,12 +72,12 @@ Searching all name entries for a given tax id:
 
 Download and build the program:
 
-	git clone git://github.com/mvneves/ncbi-taxcollector
-	cd ncbi-taxcollector
+	git clone git://github.com/mvneves/ncbitaxcollector
+	cd ncbitaxcollector
 	make
 
 
-Download gi_taxid_nucl.dmp, names.dmp and nodes.dmp from [NCBI's FTP site](ftp://ftp.ncbi.nih.gov/pub/taxonomy)
+Download gi_taxid_nucl.dmp, names.dmp and nodes.dmp from NCBI's FTP site:
 
 	wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 	tar xzf taxdump.tar.gz
@@ -85,8 +85,7 @@ Download gi_taxid_nucl.dmp, names.dmp and nodes.dmp from [NCBI's FTP site](ftp:/
 
 # References
 
-- NCBI Taxonomy tree in SQL: http://linnaeus.zoology.gla.ac.uk/~rpage/tbmap/downloads/ncbi/ 
-- A TaxCollector in python: 
-[https://github.com/audy/taxcollector](https://github.com/audy/taxcollector)
+- NCBI Taxonomy tree in SQL: [http://linnaeus.zoology.gla.ac.uk/~rpage/tbmap/downloads/ncbi/](http://linnaeus.zoology.gla.ac.uk/~rpage/tbmap/downloads/ncbi/) 
+- A TaxCollector in python: [https://github.com/audy/taxcollector](https://github.com/audy/taxcollector)
 
 
