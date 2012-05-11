@@ -1,10 +1,11 @@
 
 # NCBITaxCollector
 
-NCBITaxCollector is a tool for using the gi field of the FASTA format to 
-search taxonomy information in NCBI bases. It is designed to maximize 
-performance and allow many searches per second. For this reason, it is 
-especially suitable for use in scripts.
+NCBI TaxCollector is a tool for using the GI field of the FASTA format to
+search taxonomy information in NCBI bases. It is designed to maximize
+performance and allow many searches per second. NCBITaxCollector runs as
+a command line tool and, for this reason, it is especially suitable for
+use in scripts.
 
 
 # Examples of usage
