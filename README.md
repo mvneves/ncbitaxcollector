@@ -1,9 +1,9 @@
 
-# NCBITaxCollector
+# NCBI-TaxCollector
 
-NCBI TaxCollector is a tool for using the GI field of the FASTA format to
+NCBI-TaxCollector is a tool for using the GI field of the FASTA format to
 search taxonomy information in NCBI bases. It is designed to maximize
-performance and allow many searches per second. NCBITaxCollector runs as
+performance and allow many searches per second. It runs as
 a command line tool and, for this reason, it is especially suitable for
 use in scripts.
 
@@ -86,7 +86,7 @@ Download gi_taxid_nucl.dmp, names.dmp and nodes.dmp from NCBI's FTP site:
 
 # Binary Format Description
 
-One of main characteristics of our tool is its ability to create optimized binary versions of the NCBI database files.
+One of the main characteristics of our tool is its ability to create optimized binary versions of the NCBI database files.
 Here is the a detailed description of the binary records used in our code. 
 Please refer to the [NCBI Handbook](http://www.ncbi.nlm.nih.gov/books/NBK21100/) for more information about the fields.
 
