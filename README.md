@@ -84,9 +84,65 @@ Download gi_taxid_nucl.dmp, names.dmp and nodes.dmp from NCBI's FTP site:
 	tar xzf taxdump.tar.gz
 
 
+# Binary Format Description
+
+One of main characteristics of our tool is its ability to create optimized binary versions of the NCBI database files.
+Here is the a detailed description of the binary records used in our code. 
+Please refer to the [NCBI Handbook](http://www.ncbi.nlm.nih.gov/books/NBK21100/) for more information about the fields.
+
+## Nodes ##
+
+This struct represents a binary entry/record in the taxonomy nodes file.
+
+	struct nodes_dmp {
+		int tax_id;							// node id in GenBank taxonomy database
+		int parent_tax_id;					// parent node id in GenBank taxonomy database
+		char rank;							// rank of this node (superkingdom, kingdom, ...) 
+		char embl_code[3];					// locus-name prefix; not unique
+		short division_id;					// see division.dmp file
+		char inherited_div_flag;			// 1 if node inherits division from parent
+		short genetic_code_id;				// see gencode.dmp file
+		char inherited_GC_flag;				// 1 if node inherits genetic code from parent
+		int mitochondrial_genetic_code_id;	// see gencode.dmp file
+		char inherited_MGC_flag;			// 1 if node inherits mitochondrial gencode from parent
+		char GenBank_hidden_flag;			// 1 if name is suppressed in GenBank entry lineage
+		char hidden_subtree_root_flag;		// 1 if this subtree has no sequence data yet
+	#ifdef NCBITC_WITH_COMMENTS
+		char comments[255];					// free-text comments and citations
+	#endif
+	};
+
+Total of 28 bytes per record.
+
+## Names ##
+
+This struct represents a binary entry/record in the taxonomy names file.
+
+	struct names_dmp {
+		int tax_id;								// the id of node associated with this name
+		char name_txt[NCBITC_MAX_LONG_NAME];	// name itself
+		char unique_name[NCBITC_MAX_LONG_NAME];	// the unique variant of this name if name not unique
+		char name_class[NCBITC_MAX_LONG_NAME];	// (synonym, common name, ...)
+	};
+
+Total of 196 bytes per record.
+
+## GI to NCBI ID Mapping ##
+
+This struct represents a binary entry/record in the mapping file.
+
+	struct gi_taxid_nucl_dmp {
+	#ifdef NCBITC_WITH_GIINDEX
+		int gi;					// GI field of the FASTA format
+	#endif
+		int tax_id;				// NCBI taxonomy id
+	};
+
+Total of 4 bytes per record.
+
 # References
 
 - NCBI Taxonomy tree in SQL: [http://linnaeus.zoology.gla.ac.uk/~rpage/tbmap/downloads/ncbi/](http://linnaeus.zoology.gla.ac.uk/~rpage/tbmap/downloads/ncbi/) 
 - A TaxCollector in python: [https://github.com/audy/taxcollector](https://github.com/audy/taxcollector)
-
-
+- The Taxonomy Project - The NCBI Handbook: [http://www.ncbi.nlm.nih.gov/books/NBK21100/](http://www.ncbi.nlm.nih.gov/books/NBK21100/)
+- Taxdump readme: [ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_readme.txt](ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_readme.txt)
